@@ -3,3 +3,28 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.text_ser {
+    margin-top: 3rem;
+    text-align: start;
+    color: rgb(207, 161, 161);
+    font-size: 3rem;
+}
+
+.text_cont {
+    margin-top: 3rem;
+    text-align: start;
+    color: white;
+    font-size: 1rem;
+}
+
+h2 {
+    margin-top: 3rem;
+    text-align: center;
+    color: white;
+}
+
+h5 {
+    text-align: center;
+    color: white;
+}

@@ -22,14 +22,27 @@ app.get('/', (req, res) => {
     res.render('home', { title: "Ejercicio hbs", user: null })
 })
 
+app.get('/services/:name', (req, res) => {
+    const service = req.params.name
+    const serviceData = services.find((url) => url.url === `/services/${service}`)
+
+    if (!serviceData) {
+        return res.status(404).render('404', { title_error: "Error no se encuentra el servicio" })
+    }
+
+    res.render('service', { service: serviceData })
+
+})
 
 app.get('/services', (req, res) => {
     res.render('servicios', { services: services })
 })
 
+
+
 // error si la ruta no es correcta
 app.use('*', (req, res) => {
-    res.status(404).send('Esta Página no existe')
+    res.status(404).render('404', { title_error: "Pagina no encontrada" })
 })
 
 const PORT = process.env.PORT || 3000
