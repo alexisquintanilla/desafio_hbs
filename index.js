@@ -1,6 +1,7 @@
 import express from 'express'
 import { engine } from 'express-handlebars';
 import path from 'path'
+import { services } from './data/service.data.js'
 
 const app = express()
 
@@ -10,7 +11,7 @@ const __dirname = import.meta.dirname
 // middleware archivos estáticos
 app.use(express.static('public'))
 console.log(__dirname)
-app.use('/assets/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
+app.use('/assets/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')))
 app.use('/assets/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js')))
 
 app.engine('.hbs', engine({ extname: '.hbs' }));
@@ -22,8 +23,13 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/servicios', (req, res) => {
-    res.render('servicios', { products: products, fruts })
+app.get('/services', (req, res) => {
+    res.render('servicios', { services: services })
+})
+
+// error si la ruta no es correcta
+app.use('*', (req, res) => {
+    res.status(404).send('Esta Página no existe')
 })
 
 const PORT = process.env.PORT || 3000
