@@ -19,7 +19,7 @@ app.set('view engine', '.hbs');
 app.set('views', __dirname + '/views');
 
 app.get('/', (req, res) => {
-    res.render('home', { title: "Ejercicio hbs", user: null })
+    res.render('home', { title: "Ejercicios hbs", user: null })
 })
 
 app.get('/services/:name', (req, res) => {
